@@ -1,32 +1,109 @@
-.App {
+.main {
+  width: 290px;
+  margin: 0 auto;
+  background: #c2d4d8;
+  height: 320px;
+  box-shadow: 2px 2px 2px gray;
+  padding: 15px;
+  border-bottom: 5px solid #b0aac2;
+  border-radius: 4px;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+  font: bold 14px Arial, sans-serif;
+}
+
+.single-button {
+  list-style: none;
+  float: left;
+  width: 52px;
+  background: white;
+  margin: 9px 5px;
+  padding: 10px;
+  border-bottom: 4px solid #7b8d8e;
+  border-radius: 5px;
+  color: #888888;
   text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.single-button:hover {
+  background: #729f98;
+  border-bottom: 4px solid #f2efe8;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.clear {
+  width: 60px;
+  background: #7b8d8e;
+  padding: 10px 17px;
+  position: absolute;
+  border-radius: 3px;
+  left: 215px;
+  top: 18px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.display {
+  list-style: none;
+  color: white;
+  height: 50px;
+  width: 58px;
+  margin-left: 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 8px;
+  width: 182px;
+  background: #828a9b;
+  border-top: 4px solid #b0aac2;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: auto;
+  line-height: 45px;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #828a9b;
+}
+
+::-webkit-scrollbar-button {
+  background: #fe5e6a;
+}
+::-webkit-scrollbar-thumb {
+  background: #fe5e6a;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c43235;
+}
+
+.submit {
+  list-style: none;
+  float: left;
+  width: 52px;
+  background: #c43235;
+  margin: 9px 5px;
+  padding: 10px;
+  border-bottom: 4px solid white;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background: #fe5e6a;
+  border-bottom: 4px solid #b3232e;
+  color: white;
 }
