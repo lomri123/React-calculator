@@ -28,8 +28,7 @@ class App extends Component {
     calculation: ""
   };
 
-  handleClick = e => {
-    const value = e.target.getAttribute("data-value");
+  handleClick = value => {
     this.setState(prevState => ({
       calculation: prevState.calculation + value,
       display: prevState.display === "ERROR" ? value : prevState.display + value
@@ -66,7 +65,7 @@ class App extends Component {
           <SingleButton
             buttonValue={button}
             key={button}
-            clickButton={this.handleClick}
+            clickButton={this.handleClick.bind(this, button)}
           />
         ))}
         <Submit submitButton={this.handleSubmit} />
