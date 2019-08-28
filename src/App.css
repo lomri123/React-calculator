@@ -36,7 +36,7 @@
   color: white;
 }
 
-.clear {
+.clear-button {
   width: 60px;
   background: #7b8d8e;
   padding: 10px 17px;
@@ -87,7 +87,7 @@
   background: #c43235;
 }
 
-.submit {
+.submit-button {
   list-style: none;
   float: left;
   width: 52px;
@@ -102,7 +102,7 @@
   cursor: pointer;
 }
 
-.submit:hover {
+.submit-button:hover {
   background: #fe5e6a;
   border-bottom: 4px solid #b3232e;
   color: white;

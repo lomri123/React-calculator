@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import { SingleButton } from "./components/singleButton";
+import { SingleButton } from "./components/SingleButton";
 import { Display } from "./components/Display";
-import { Clear } from "./components/Clear";
-import { Submit } from "./components/Sumbit";
+import { ClearButton } from "./components/ClearButton";
+import { SubmitButton } from "./components/SubmitButton";
 import math from "mathjs";
 
 class App extends Component {
   state = {
-    display: "",
     buttons: [
       "7",
       "8",
@@ -25,14 +24,23 @@ class App extends Component {
       "0",
       "."
     ],
-    calculation: ""
+    display: "",
+    calculation: "",
+    submitStatus: false
   };
 
   handleClick = value => {
-    this.setState(prevState => ({
-      calculation: prevState.calculation + value,
-      display: prevState.display === "ERROR" ? value : prevState.display + value
-    }));
+    let tmpCalc = this.state.calculation;
+    if (this.state.submitStatus) {
+      this.setState({ submitStatus: false });
+      if (!isNaN(Number(value))) {
+        tmpCalc = "";
+      }
+    }
+    this.setState({
+      calculation: tmpCalc + value,
+      display: tmpCalc + value
+    });
   };
 
   handleClear = () => {
@@ -40,13 +48,14 @@ class App extends Component {
   };
 
   handleSubmit = () => {
-    let evaluation = this.state.calculation;
-
+    const evaluation = this.state.calculation;
     try {
       math.eval(evaluation);
-      let score = math.eval(evaluation);
+      const score = math.eval(evaluation);
       this.setState({
-        display: score
+        display: score,
+        submitStatus: true,
+        calculation: score
       });
     } catch {
       this.setState({
@@ -59,17 +68,21 @@ class App extends Component {
   render() {
     return (
       <div className="main">
-        <Clear clearButton={this.handleClear} />
+        <ClearButton clearButton={this.handleClear} />
         <Display showResult={this.state.display} />
         {this.state.buttons.map(button => (
           <SingleButton
             buttonValue={button}
             key={button}
-            clickButton={this.handleClick.bind(this, button)}
+            clickButton={() => this.handleClick(button)}
           />
         ))}
-        <Submit submitButton={this.handleSubmit} />
-        <SingleButton buttonValue="+" key="+" clickButton={this.handleClick} />
+        <SubmitButton submitButton={this.handleSubmit} />
+        <SingleButton
+          buttonValue="+"
+          key="+"
+          clickButton={() => this.handleClick("+")}
+        />
       </div>
     );
   }
